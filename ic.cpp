@@ -12,7 +12,7 @@ struct Node
     {}
 };
 void print(Node* head){
-	if(head==0)return;
+	if(head==0) return;
 	printf("%d\n",head->n);
 	return print(head->next);
 }
@@ -26,9 +26,9 @@ int main(){
 		// std::cin >> cm >> tmp;
 		scanf("%s",cm);
 		// printf("%s\n",cm);
-		
+
 		if(strcmp(cm,"ri")==0){
-			scanf(" %d",&tmp);
+			scanf("%d",&tmp);
 			Node* n = new Node(tmp);
 			if(head->next==0){
 				head->next = n;
@@ -50,8 +50,9 @@ int main(){
 				tail = n;
 			}
 			else{
+                (head->next)->pre = n;
 				n->next = head->next;
-				n->pre=head;
+				n->pre = head;
 				head->next = n;
 				if(tail->pre == head) tail->pre = n;
 			}
@@ -63,7 +64,7 @@ int main(){
 				if(tmp->next==0)continue;
 				head->next = tmp->next;
 				(head->next)->pre = head;
-				
+
 				tmp->pre = tail;
 				tail->next = tmp;
 				tail = tmp;
@@ -81,15 +82,17 @@ int main(){
 				if(tmp->pre==head)continue;
 				tail = tail->pre;
 				tail->next = 0;
+				(head->next)->pre = tmp;
 				tmp->next = head->next;
+				tmp->pre = head;
 				head->next = tmp;
-				(tmp->next)->pre = tmp;
 			}
 			// printf("------------\n");
-			// print(head->next);
+			//print(head->next);
 		}
 		// printf("------------\n");
-		// print(head->next);
+		//print(head->next);
 	}
 	print(head->next);
+	return 0;
 }
