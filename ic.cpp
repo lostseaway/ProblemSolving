@@ -87,6 +87,7 @@ int main(){
 				tmp->pre = head;
 				head->next = tmp;
 			}
+			
 			// printf("------------\n");
 			//print(head->next);
 		}
